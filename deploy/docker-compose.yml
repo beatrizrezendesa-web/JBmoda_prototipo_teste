@@ -1,0 +1,57 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: jbmodas-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME:-jb_modas}
+      TZ: ${TZ:-America/Sao_Paulo}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - jbmodas-data:/var/lib/mysql
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'mysqladmin ping -h 127.0.0.1 -uroot -p"$${MYSQL_ROOT_PASSWORD}" --silent'
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build:
+      context: ../jb-modas-api
+      dockerfile: Dockerfile
+    container_name: jbmodas-backend
+    restart: unless-stopped
+    environment:
+      PORT: 8080
+      DB_URL: "jdbc:mysql://mysql:3306/${DB_NAME:-jb_modas}?createDatabaseIfNotExist=true&serverTimezone=America/Sao_Paulo"
+      DB_USER: root
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_MINUTES: ${JWT_MINUTES:-60}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:4200}
+      TZ: ${TZ:-America/Sao_Paulo}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: jbmodas-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-4200}:80"
+    depends_on:
+      - backend
+
+volumes:
+  jbmodas-data:
