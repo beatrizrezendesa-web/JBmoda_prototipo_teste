@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap%27');
+ 
+:root {
+  --cor-vinho: #6b1d2f;
+  --cor-bordo: #581827;
+  --cor-neve: #fbf8f7;
+  --cor-pessego: #f5dfd5;
+  --cor-bege: #efe4df;
+  --cor-texto: #2d2d2d;
+  --cor-cinza-sub: #666666;
+  --cor-verde: #2e7d32;
+}
+ 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  background-color: var(--cor-neve);
+  color: var(--cor-texto);
+  font-family: 'DM Sans', sans-serif;
+  height: 100vh;
+}

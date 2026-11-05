@@ -1,0 +1,141 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+ 
+.sidebar {
+  width: 250px;
+  background: white;
+  border-right: 1px solid var(--cor-bege);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+ 
+.logo-area h2 {
+  color: var(--cor-vinho);
+  font-family: 'Playfair Display', serif;
+}
+ 
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
+  flex-grow: 1;
+}
+ 
+.nav-links a {
+  text-decoration: none;
+  color: var(--cor-texto);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+ 
+.nav-links a.active, .nav-links a:hover {
+  background: var(--cor-pessego);
+  color: var(--cor-vinho);
+  font-weight: 600;
+}
+ 
+.user-footer {
+  border-top: 1px solid var(--cor-bege);
+  padding-top: 16px;
+}
+ 
+.logout {
+  display: block;
+  margin-top: 8px;
+  color: var(--cor-vinho);
+  text-decoration: none;
+  font-size: 12px;
+}
+ 
+.main-content {
+  flex-grow: 1;
+  padding: 32px;
+  overflow-y: auto;
+}
+ 
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+ 
+.search-input {
+  width: 340px;
+  padding: 10px 16px;
+  border: 1px solid var(--cor-bege);
+  border-radius: 20px;
+  outline: none;
+}
+ 
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+ 
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--cor-bege);
+}
+ 
+.card h3 {
+  font-size: 24px;
+  color: var(--cor-vinho);
+  margin: 8px 0;
+}
+ 
+.tag-up {
+  color: var(--cor-verde);
+  font-size: 12px;
+}
+ 
+.sections-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+ 
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--cor-bege);
+}
+ 
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+ 
+.data-table td {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--cor-neve);
+  font-size: 14px;
+}
+ 
+.stock-list {
+  list-style: none;
+  margin-top: 12px;
+}
+ 
+.stock-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cor-neve);
+  font-size: 14px;
+}
+ 
+.text-danger {
+  color: #c62828;
+}

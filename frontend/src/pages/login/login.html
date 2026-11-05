@@ -1,0 +1,34 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="logo-box">
+      <h1 class="brand-title">JB</h1>
+      <span class="brand-sub">MODA FITNESS PRAIA</span>
+    </div>
+ 
+    <h2>Bem-vinda de volta</h2>
+    <p class="subtitle">Acesse o painel da JB MODA.</p>
+ 
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="voce@email.com" required />
+      </div>
+ 
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" [(ngModel)]="senha" name="senha" placeholder="********" required />
+      </div>
+ 
+      <div class="form-options">
+        <label><input type="checkbox" /> Lembrar de mim</label>
+        <a href="#">Esqueci minha senha</a>
+      </div>
+ 
+      <button type="submit" class="btn-primary">Entrar →</button>
+    </form>
+ 
+    <p class="footer-note">Acesso restrito à equipe da JB MODA.</p>
+    <a routerLink="/" class="btn-back">← Voltar ao início</a>
+  </div>
+</div>
+ 

@@ -1,0 +1,81 @@
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="logo-area">
+      <h2>JB MODA</h2>
+      <span>FITNESS PRAIA</span>
+    </div>
+    <nav class="nav-links">
+      <a routerLink="/dashboard" class="active">Dashboard</a>
+      <a routerLink="/vendas">Vendas</a>
+      <a routerLink="/pedidos">Pedidos</a>
+      <a routerLink="/estoque">Estoque</a>
+      <a routerLink="/clientes">Clientes</a>
+      <a routerLink="/financeiro">Financeiro</a>
+      <a routerLink="/relatorios">Relatórios</a>
+    </nav>
+    <div class="user-footer">
+      <p><strong>Olá, Ana</strong></p>
+      <small>Gerente da loja</small>
+      <a routerLink="/login" class="logout">→ Logout</a>
+    </div>
+  </aside>
+ 
+  <main class="main-content">
+    <header class="top-bar">
+      <input type="text" placeholder="Buscar por produto, cliente, pedido..." class="search-input" />
+      <span class="date-badge">01/10/2026 - 31/10/2026</span>
+    </header>
+ 
+    <section class="page-title">
+      <h1>Visão geral da loja</h1>
+      <p>Acompanhe os indicadores e o desempenho do seu negócio.</p>
+    </section>
+ 
+    <div class="cards-grid">
+      <div class="card">
+        <span>Faturamento do mês</span>
+        <h3>{{ faturamentoMes }}</h3>
+        <small class="tag-up">↑ 12% em relação ao mês anterior</small>
+      </div>
+      <div class="card">
+        <span>Vendas realizadas</span>
+        <h3>{{ vendasRealizadas }}</h3>
+        <small class="tag-up">↑ 15% em relação ao mês anterior</small>
+      </div>
+      <div class="card">
+        <span>Peças no estoque</span>
+        <h3>{{ pecasEstoque }}</h3>
+        <small class="tag-up">↑ 8% em relação ao mês anterior</small>
+      </div>
+      <div class="card alert">
+        <span>Estoque baixo</span>
+        <h3>{{ estoqueBaixo }}</h3>
+        <small class="text-danger">Produtos precisam de reposição</small>
+      </div>
+    </div>
+ 
+    <div class="sections-grid">
+      <div class="box">
+        <h3>Pedidos recentes</h3>
+        <table class="data-table">
+          <tr *ngFor="let pedido of pedidosRecentes">
+            <td><strong>{{ pedido.id }}</strong></td>
+            <td>{{ pedido.cliente }}</td>
+            <td>{{ pedido.valor }}</td>
+            <td><span class="status-badge">{{ pedido.status }}</span></td>
+          </tr>
+        </table>
+      </div>
+ 
+      <div class="box">
+        <h3>Produtos com estoque baixo</h3>
+        <ul class="stock-list">
+          <li *ngFor="let prod of produtosEstoqueBaixo">
+            <span>{{ prod.nome }}</span>
+            <strong class="text-danger">{{ prod.qtd }}</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</div>
